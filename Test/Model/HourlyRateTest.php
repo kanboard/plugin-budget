@@ -1,12 +1,21 @@
 <?php
 
-require_once __DIR__.'/../Base.php';
+require_once 'tests/units/Base.php';
 
+use Core\PluginLoader;
 use Model\User;
-use Model\HourlyRate;
+use Plugin\Budget\Model\HourlyRate;
 
 class HourlyRateTest extends Base
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        $plugin = new PluginLoader($this->container);
+        $plugin->loadSchema('Budget');
+    }
+
     public function testCreation()
     {
         $hr = new HourlyRate($this->container);
