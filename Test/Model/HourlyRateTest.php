@@ -2,7 +2,7 @@
 
 require_once 'tests/units/Base.php';
 
-use Core\PluginLoader;
+use Core\Plugin\Loader;
 use Model\User;
 use Plugin\Budget\Model\HourlyRate;
 
@@ -12,7 +12,7 @@ class HourlyRateTest extends Base
     {
         parent::setUp();
 
-        $plugin = new PluginLoader($this->container);
+        $plugin = new Loader($this->container);
         $plugin->loadSchema('Budget');
     }
 
