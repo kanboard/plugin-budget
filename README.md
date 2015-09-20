@@ -21,3 +21,4 @@ Documentation
 -------------
 
 - [Budget](Doc/Budget.markdown)
+- [Hourly rate](Doc/hourly-rate.markdown)
