@@ -3,9 +3,9 @@
 namespace Plugin\Budget;
 
 use Core\Translator;
-use Core\PluginBase;
+use Core\Plugin\Base;
 
-class Plugin extends PluginBase
+class Plugin extends Base
 {
     public function initialize()
     {
