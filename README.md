@@ -16,4 +16,8 @@ Installation
 
 - Create a folder **plugins/Budget**
 - Copy all files under this directory
-- Done
+
+Documentation
+-------------
+
+- [Budget](Doc/Budget.markdown)
