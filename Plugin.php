@@ -28,4 +28,24 @@ class Plugin extends Base
             )
         );
     }
+
+    public function getPluginName()
+    {
+        return 'Budget Planning';
+    }
+
+    public function getPluginDescription()
+    {
+        return t('Add budget section for projects and expense reports based on user hourly rates');
+    }
+
+    public function getPluginAuthor()
+    {
+        return 'Frédéric Guillot';
+    }
+
+    public function getPluginVersion()
+    {
+        return '1.0.0';
+    }
 }
