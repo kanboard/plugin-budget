@@ -2,9 +2,9 @@
 
 require_once 'tests/units/Base.php';
 
-use Core\Plugin\Loader;
-use Model\User;
-use Plugin\Budget\Model\HourlyRate;
+use Kanboard\Core\Plugin\Loader;
+use Kanboard\Model\User;
+use Kanboard\Plugin\Budget\Model\HourlyRate;
 
 class HourlyRateTest extends Base
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Plugin\Budget\Controller;
+namespace Kanboard\Plugin\Budget\Controller;
 
-use Controller\Base;
+use Kanboard\Controller\Base;
 
 /**
  * Budget

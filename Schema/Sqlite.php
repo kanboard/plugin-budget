@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\Budget\Schema;
+namespace Kanboard\Plugin\Budget\Schema;
 
 const VERSION = 1;
 

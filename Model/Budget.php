@@ -1,16 +1,16 @@
 <?php
 
-namespace Plugin\Budget\Model;
+namespace Kanboard\Plugin\Budget\Model;
 
 use DateInterval;
 use DateTime;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Model\Base;
-use Model\SubtaskTimeTracking;
-use Model\Task;
-use Model\User;
-use Model\Subtask;
+use Kanboard\Model\Base;
+use Kanboard\Model\SubtaskTimeTracking;
+use Kanboard\Model\Task;
+use Kanboard\Model\User;
+use Kanboard\Model\Subtask;
 
 /**
  * Budget

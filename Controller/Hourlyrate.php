@@ -1,8 +1,8 @@
 <?php
 
-namespace Plugin\Budget\Controller;
+namespace Kanboard\Plugin\Budget\Controller;
 
-use Controller\User;
+use Kanboard\Controller\User;
 
 /**
  * Hourly Rate controller
