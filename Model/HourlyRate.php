@@ -1,8 +1,8 @@
 <?php
 
-namespace Plugin\Budget\Model;
+namespace Kanboard\Plugin\Budget\Model;
 
-use Model\Base;
+use Kanboard\Model\Base;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
