@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h2><?= t('Hourly rates') ?></h2>
+    <h2><?= t('Hourly rate') ?></h2>
 </div>
 
 <?php if (! empty($rates)): ?>
