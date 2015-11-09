@@ -38,7 +38,7 @@ class Budget extends Base
         $project = $this->getProject();
 
         $paginator = $this->paginator
-            ->setUrl('budget', 'breakdown', array('project_id' => $project['id']))
+            ->setUrl('budget', 'breakdown', array('plugin' => 'budget', 'project_id' => $project['id']))
             ->setMax(30)
             ->setOrder('start')
             ->setDirection('DESC')
