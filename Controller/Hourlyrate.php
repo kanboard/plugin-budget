@@ -43,11 +43,11 @@ class Hourlyrate extends User
         if ($valid) {
 
             if ($this->hourlyRate->create($values['user_id'], $values['rate'], $values['currency'], $values['date_effective'])) {
-                $this->session->flash(t('Hourly rate created successfully.'));
+                $this->flash->success(t('Hourly rate created successfully.'));
                 $this->response->redirect($this->helper->url->to('hourlyrate', 'index', array('plugin' => 'budget', 'user_id' => $values['user_id'])));
             }
             else {
-                $this->session->flashError(t('Unable to save the hourly rate.'));
+                $this->flash->failure(t('Unable to save the hourly rate.'));
             }
         }
 
@@ -80,10 +80,10 @@ class Hourlyrate extends User
         $user = $this->getUser();
 
         if ($this->hourlyRate->remove($this->request->getIntegerParam('rate_id'))) {
-            $this->session->flash(t('Rate removed successfully.'));
+            $this->flash->success(t('Rate removed successfully.'));
         }
         else {
-            $this->session->flash(t('Unable to remove this rate.'));
+            $this->flash->success(t('Unable to remove this rate.'));
         }
 
         $this->response->redirect($this->helper->url->to('hourlyrate', 'index', array('plugin' => 'budget', 'user_id' => $user['id'])));
