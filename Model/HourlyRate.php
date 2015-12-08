@@ -30,7 +30,7 @@ class HourlyRate extends Base
      */
     public function getAllByProject($project_id)
     {
-        $members = $this->projectPermission->getMembers($project_id);
+        $members = $this->projectUserRole->getAssignableUsers($project_id);
 
         if (empty($members)) {
             return array();
