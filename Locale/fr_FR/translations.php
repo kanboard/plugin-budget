@@ -31,4 +31,5 @@ return array(
     'Budget overview' => 'Vue d\'ensemble du budget',
     'Type' => 'Type',
     'Add budget section for projects and expense reports based on user hourly rates' => 'Ajoute une section budget aux projets et des rapports de dépenses en fonction du taux horaire des utilisateurs',
+    'There is not enough data to show something.' => 'Il n\'y a pas assez de donnée pour montrer quelque chose.',
 );

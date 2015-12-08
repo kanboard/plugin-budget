@@ -4,17 +4,19 @@ namespace Kanboard\Plugin\Budget;
 
 use Kanboard\Core\Translator;
 use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Security\Role;
 
 class Plugin extends Base
 {
     public function initialize()
     {
-        $this->acl->extend('project_manager_acl', array('budget' => '*'));
+        $this->applicationAccessMap->add('hourlyrate', '*', Role::APP_ADMIN);
+        $this->projectAccessMap->add('budget', '*', Role::PROJECT_MANAGER);
 
         $this->template->hook->attach('template:project:dropdown', 'budget:project/dropdown');
         $this->template->hook->attach('template:user:sidebar:actions', 'budget:user/sidebar');
 
-        $this->on('session.bootstrap', function($container) {
+        $this->on('app.bootstrap', function($container) {
             Translator::load($container['config']->getCurrentLanguage(), __DIR__.'/Locale');
         });
     }
@@ -46,7 +48,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.2';
+        return '1.0.3';
     }
 
     public function getPluginHomepage()
