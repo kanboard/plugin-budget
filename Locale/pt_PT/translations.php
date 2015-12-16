@@ -30,4 +30,6 @@ return array(
     'Burndown chart for "%s"' => 'Gráfico de Burndown para "%s"',
     'Budget overview' => 'Visão geral do orçamento',
     'Type' => 'Tipo',
+    'Add budget section for projects and expense reports based on user hourly rates' => 'Adicionar secção de orçamento para projectos e relatórios de despesas com base em taxas horárias de utilizadores',
+    'There is not enough data to show something.' => 'Não há nada para mostrar',
 );
