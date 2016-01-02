@@ -28,6 +28,6 @@ return array(
     'Remaining' => 'Прочее',
     'Currency rates are used to calculate project budget.' => 'Курсы валют используются для расчета бюджета проекта.',
     'Burndown chart for "%s"' => 'Диаграмма сгорания для « %s »',
-    // 'Budget overview' => '',
-    // 'Type' => '',
+    'Budget overview' => 'Обзор бюджета',
+    'Type' => 'Тип',
 );
