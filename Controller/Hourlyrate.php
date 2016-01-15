@@ -23,7 +23,7 @@ class Hourlyrate extends User
 
         $this->response->html($this->layout('budget:hourlyrate/index', array(
             'rates' => $this->hourlyRate->getAllByUser($user['id']),
-            'currencies_list' => $this->config->getCurrencies(),
+            'currencies_list' => $this->currency->getCurrencies(),
             'values' => $values + array('user_id' => $user['id']),
             'errors' => $errors,
             'user' => $user,
