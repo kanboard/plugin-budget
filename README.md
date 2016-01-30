@@ -1,6 +1,9 @@
 Budget Plugin for Kanboard
 ==========================
 
+[![Build Status](https://travis-ci.org/kanboard/plugin-budget.svg?branch=master)](https://travis-ci.org/kanboard/plugin-budget)
+
+
 - Create budget lines
 - See expenses based on sub-task time tracking
 - Manage user hourly rates
