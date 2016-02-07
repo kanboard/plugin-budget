@@ -21,7 +21,7 @@ class Hourlyrate extends User
     {
         $user = $this->getUser();
 
-        $this->response->html($this->layout('budget:hourlyrate/index', array(
+        $this->response->html($this->helper->layout->user('budget:hourlyrate/index', array(
             'rates' => $this->hourlyRate->getAllByUser($user['id']),
             'currencies_list' => $this->currency->getCurrencies(),
             'values' => $values + array('user_id' => $user['id']),
@@ -63,7 +63,7 @@ class Hourlyrate extends User
     {
         $user = $this->getUser();
 
-        $this->response->html($this->layout('budget:hourlyrate/remove', array(
+        $this->response->html($this->helper->layout->user('budget:hourlyrate/remove', array(
             'rate_id' => $this->request->getIntegerParam('rate_id'),
             'user' => $user,
         )));

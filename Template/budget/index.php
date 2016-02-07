@@ -19,7 +19,7 @@
     </tr>
     <?php foreach ($daily_budget as $line): ?>
     <tr>
-        <td><?= dt('%B %e, %Y', strtotime($line['date'])) ?></td>
+        <td><?= $this->dt->date($line['date']) ?></td>
         <td><?= n($line['in']) ?></td>
         <td><?= n($line['out']) ?></td>
         <td><?= n($line['left']) ?></td>

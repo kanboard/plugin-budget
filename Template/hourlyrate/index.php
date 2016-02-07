@@ -15,7 +15,7 @@
     <tr>
         <td><?= n($rate['rate']) ?></td>
         <td><?= $rate['currency'] ?></td>
-        <td><?= dt('%b %e, %Y', $rate['date_effective']) ?></td>
+        <td><?= $this->dt->date($rate['date_effective']) ?></td>
         <td>
             <?= $this->url->link(t('Remove'), 'hourlyrate', 'confirm', array('plugin' => 'budget', 'user_id' => $user['id'], 'rate_id' => $rate['id'])) ?>
         </td>

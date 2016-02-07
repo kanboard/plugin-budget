@@ -21,7 +21,7 @@
             <td><?= $this->url->link($this->e($record['name'] ?: $record['username']), 'user', 'show', array('user_id' => $record['user_id'])) ?></td>
             <td><?= n($record['cost']) ?></td>
             <td><?= n($record['time_spent']).' '.t('hours') ?></td>
-            <td><?= dt('%B %e, %Y', $record['start']) ?></td>
+            <td><?= $this->dt->date($record['start']) ?></td>
         </tr>
         <?php endforeach ?>
     </table>

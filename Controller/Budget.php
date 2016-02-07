@@ -21,7 +21,7 @@ class Budget extends Base
     {
         $project = $this->getProject();
 
-        $this->response->html($this->projectLayout('budget:budget/index', array(
+        $this->response->html($this->helper->layout->project('budget:budget/index', array(
             'daily_budget' => $this->budget->getDailyBudgetBreakdown($project['id']),
             'project' => $project,
             'title' => t('Budget')
@@ -45,7 +45,7 @@ class Budget extends Base
             ->setQuery($this->budget->getSubtaskBreakdown($project['id']))
             ->calculate();
 
-        $this->response->html($this->projectLayout('budget:budget/breakdown', array(
+        $this->response->html($this->helper->layout->project('budget:budget/breakdown', array(
             'paginator' => $paginator,
             'project' => $project,
             'title' => t('Budget')
@@ -65,7 +65,7 @@ class Budget extends Base
             $values['date'] = date('Y-m-d');
         }
 
-        $this->response->html($this->projectLayout('budget:budget/create', array(
+        $this->response->html($this->helper->layout->project('budget:budget/create', array(
             'lines' => $this->budget->getAll($project['id']),
             'values' => $values + array('project_id' => $project['id']),
             'errors' => $errors,
@@ -109,7 +109,7 @@ class Budget extends Base
     {
         $project = $this->getProject();
 
-        $this->response->html($this->projectLayout('budget:budget/remove', array(
+        $this->response->html($this->helper->layout->project('budget:budget/remove', array(
             'project' => $project,
             'budget_id' => $this->request->getIntegerParam('budget_id'),
             'title' => t('Remove a budget line'),

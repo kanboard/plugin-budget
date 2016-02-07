@@ -13,7 +13,7 @@
     <?php foreach ($lines as $line): ?>
     <tr>
         <td><?= n($line['amount']) ?></td>
-        <td><?= dt('%B %e, %Y', strtotime($line['date'])) ?></td>
+        <td><?= $this->dt->date($line['date']) ?></td>
         <td><?= $this->e($line['comment']) ?></td>
         <td>
             <?= $this->url->link(t('Remove'), 'budget', 'confirm', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>

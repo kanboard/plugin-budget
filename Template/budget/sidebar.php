@@ -11,6 +11,4 @@
             <?= $this->url->link(t('Cost breakdown'), 'budget', 'breakdown', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>
         </li>
     </ul>
-    <div class="sidebar-collapse"><a href="#" title="<?= t('Hide sidebar') ?>"><i class="fa fa-chevron-left"></i></a></div>
-    <div class="sidebar-expand" style="display: none"><a href="#" title="<?= t('Expand sidebar') ?>"><i class="fa fa-chevron-right"></i></a></div>
 </div>
