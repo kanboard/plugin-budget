@@ -14,7 +14,7 @@
     <tr>
         <td><?= n($line['amount']) ?></td>
         <td><?= $this->dt->date($line['date']) ?></td>
-        <td><?= $this->e($line['comment']) ?></td>
+        <td><?= $this->helper->text->e($line['comment']) ?></td>
         <td>
             <?= $this->url->link(t('Remove'), 'budget', 'confirm', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>
         </td>
