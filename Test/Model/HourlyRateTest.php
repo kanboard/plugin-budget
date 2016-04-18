@@ -13,7 +13,7 @@ class HourlyRateTest extends Base
         parent::setUp();
 
         $plugin = new Loader($this->container);
-        $plugin->loadSchema('Budget');
+        $plugin->scan();
     }
 
     public function testCreation()
