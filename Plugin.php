@@ -10,12 +10,12 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->applicationAccessMap->add('hourlyrate', '*', Role::APP_ADMIN);
-        $this->projectAccessMap->add('budget', '*', Role::PROJECT_MANAGER);
+        $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
+        $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
 
-        $this->route->addRoute('/budget/project/:project_id', 'budget', 'index', 'budget');
-        $this->route->addRoute('/budget/project/:project_id/lines', 'budget', 'create', 'budget');
-        $this->route->addRoute('/budget/project/:project_id/breakdown', 'budget', 'breakdown', 'budget');
+        $this->route->addRoute('/budget/project/:project_id', 'BudgetController', 'index', 'budget');
+        $this->route->addRoute('/budget/project/:project_id/lines', 'BudgetController', 'create', 'budget');
+        $this->route->addRoute('/budget/project/:project_id/breakdown', 'BudgetController', 'breakdown', 'budget');
 
         $this->template->hook->attach('template:project:dropdown', 'budget:project/dropdown');
         $this->template->hook->attach('template:user:sidebar:actions', 'budget:user/sidebar');
@@ -53,7 +53,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.7';
+        return '1.0.8';
     }
 
     public function getPluginHomepage()

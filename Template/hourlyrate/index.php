@@ -17,7 +17,7 @@
         <td><?= $rate['currency'] ?></td>
         <td><?= $this->dt->date($rate['date_effective']) ?></td>
         <td>
-            <?= $this->url->link(t('Remove'), 'hourlyrate', 'confirm', array('plugin' => 'budget', 'user_id' => $user['id'], 'rate_id' => $rate['id'])) ?>
+            <?= $this->url->link(t('Remove'), 'HourlyRateController', 'confirm', array('plugin' => 'budget', 'user_id' => $user['id'], 'rate_id' => $rate['id'])) ?>
         </td>
     </tr>
     <?php endforeach ?>
@@ -26,7 +26,7 @@
 <h3><?= t('Add new rate') ?></h3>
 <?php endif ?>
 
-<form method="post" action="<?= $this->url->href('hourlyrate', 'save', array('plugin' => 'budget', 'user_id' => $user['id'])) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('HourlyRateController', 'save', array('plugin' => 'budget', 'user_id' => $user['id'])) ?>" autocomplete="off">
 
     <?= $this->form->hidden('user_id', $values) ?>
     <?= $this->form->csrf() ?>

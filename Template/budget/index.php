@@ -12,10 +12,10 @@
 <hr/>
 <table class="table-fixed table-stripped">
     <tr>
-        <th><?= t('Date') ?></td>
-        <th><?= t('Budget line') ?></td>
-        <th><?= t('Expenses') ?></td>
-        <th><?= t('Remaining') ?></td>
+        <th><?= t('Date') ?></th>
+        <th><?= t('Budget line') ?></th>
+        <th><?= t('Expenses') ?></th>
+        <th><?= t('Remaining') ?></th>
     </tr>
     <?php foreach ($daily_budget as $line): ?>
     <tr>

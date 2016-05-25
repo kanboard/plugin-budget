@@ -2,7 +2,7 @@
 
 namespace Kanboard\Plugin\Budget\Controller;
 
-use Kanboard\Controller\Base;
+use Kanboard\Controller\BaseController;
 
 /**
  * Budget
@@ -10,7 +10,7 @@ use Kanboard\Controller\Base;
  * @package controller
  * @author  Frederic Guillot
  */
-class Budget extends Base
+class BudgetController extends BaseController
 {
     /**
      * Budget index page
@@ -38,7 +38,7 @@ class Budget extends Base
         $project = $this->getProject();
 
         $paginator = $this->paginator
-            ->setUrl('budget', 'breakdown', array('plugin' => 'budget', 'project_id' => $project['id']))
+            ->setUrl('BudgetController', 'breakdown', array('plugin' => 'budget', 'project_id' => $project['id']))
             ->setMax(30)
             ->setOrder('start')
             ->setDirection('DESC')
@@ -90,14 +90,13 @@ class Budget extends Base
 
             if ($this->budget->create($values['project_id'], $values['amount'], $values['comment'], $values['date'])) {
                 $this->flash->success(t('The budget line have been created successfully.'));
-                $this->response->redirect($this->helper->url->to('budget', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])));
-            }
-            else {
+                return $this->response->redirect($this->helper->url->to('BudgetController', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])));
+            } else {
                 $this->flash->failure(t('Unable to create the budget line.'));
             }
         }
 
-        $this->create($values, $errors);
+        return $this->create($values, $errors);
     }
 
     /**
@@ -132,6 +131,6 @@ class Budget extends Base
             $this->flash->failure(t('Unable to remove this budget line.'));
         }
 
-        $this->response->redirect($this->helper->url->to('budget', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('BudgetController', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])));
     }
 }

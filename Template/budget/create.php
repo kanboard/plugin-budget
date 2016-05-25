@@ -16,7 +16,7 @@
         <td><?= $this->dt->date($line['date']) ?></td>
         <td><?= $this->helper->text->e($line['comment']) ?></td>
         <td>
-            <?= $this->url->link(t('Remove'), 'budget', 'confirm', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>
+            <?= $this->url->link(t('Remove'), 'BudgetController', 'confirm', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $line['id'])) ?>
         </td>
     </tr>
     <?php endforeach ?>
@@ -25,7 +25,7 @@
 <h3><?= t('New budget line') ?></h3>
 <?php endif ?>
 
-<form method="post" action="<?= $this->url->href('budget', 'save', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('BudgetController', 'save', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 

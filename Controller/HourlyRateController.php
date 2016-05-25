@@ -2,7 +2,7 @@
 
 namespace Kanboard\Plugin\Budget\Controller;
 
-use Kanboard\Controller\User;
+use Kanboard\Controller\BaseController;
 
 /**
  * Hourly Rate controller
@@ -10,7 +10,7 @@ use Kanboard\Controller\User;
  * @package  controller
  * @author   Frederic Guillot
  */
-class Hourlyrate extends User
+class HourlyRateController extends BaseController
 {
     /**
      * Display rate and form
@@ -41,17 +41,15 @@ class Hourlyrate extends User
         list($valid, $errors) = $this->hourlyRate->validateCreation($values);
 
         if ($valid) {
-
             if ($this->hourlyRate->create($values['user_id'], $values['rate'], $values['currency'], $values['date_effective'])) {
                 $this->flash->success(t('Hourly rate created successfully.'));
-                $this->response->redirect($this->helper->url->to('hourlyrate', 'index', array('plugin' => 'budget', 'user_id' => $values['user_id'])));
-            }
-            else {
+                return $this->response->redirect($this->helper->url->to('HourlyRateController', 'index', array('plugin' => 'budget', 'user_id' => $values['user_id'])));
+            } else {
                 $this->flash->failure(t('Unable to save the hourly rate.'));
             }
         }
 
-        $this->index($values, $errors);
+        return $this->index($values, $errors);
     }
 
     /**
@@ -81,11 +79,10 @@ class Hourlyrate extends User
 
         if ($this->hourlyRate->remove($this->request->getIntegerParam('rate_id'))) {
             $this->flash->success(t('Rate removed successfully.'));
-        }
-        else {
+        } else {
             $this->flash->success(t('Unable to remove this rate.'));
         }
 
-        $this->response->redirect($this->helper->url->to('hourlyrate', 'index', array('plugin' => 'budget', 'user_id' => $user['id'])));
+        $this->response->redirect($this->helper->url->to('HourlyRateController', 'index', array('plugin' => 'budget', 'user_id' => $user['id'])));
     }
 }

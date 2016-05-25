@@ -6,8 +6,8 @@
     <p class="alert alert-info"><?= t('Do you really want to remove this budget line?') ?></p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'budget', 'remove', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $budget_id), true, 'btn btn-red') ?>
+        <?= $this->url->link(t('Yes'), 'BudgetController', 'remove', array('plugin' => 'budget', 'project_id' => $project['id'], 'budget_id' => $budget_id), true, 'btn btn-red') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'budget', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>
+        <?= $this->url->link(t('cancel'), 'BudgetController', 'create', array('plugin' => 'budget', 'project_id' => $project['id'])) ?>
     </div>
 </div>
