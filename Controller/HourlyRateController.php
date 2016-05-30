@@ -23,7 +23,7 @@ class HourlyRateController extends BaseController
 
         $this->response->html($this->helper->layout->user('budget:hourlyrate/index', array(
             'rates' => $this->hourlyRate->getAllByUser($user['id']),
-            'currencies_list' => $this->currency->getCurrencies(),
+            'currencies_list' => $this->currencyModel->getCurrencies(),
             'values' => $values + array('user_id' => $user['id']),
             'errors' => $errors,
             'user' => $user,

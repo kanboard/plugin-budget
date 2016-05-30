@@ -2,7 +2,7 @@
 
 namespace Kanboard\Plugin\Budget\Model;
 
-use Kanboard\Model\Base;
+use Kanboard\Core\Base;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
@@ -30,7 +30,7 @@ class HourlyRate extends Base
      */
     public function getAllByProject($project_id)
     {
-        $members = $this->projectUserRole->getAssignableUsers($project_id);
+        $members = $this->projectUserRoleModel->getAssignableUsers($project_id);
 
         if (empty($members)) {
             return array();
@@ -82,7 +82,7 @@ class HourlyRate extends Base
             'date_effective' => $this->dateParser->removeTimeFromTimestamp($this->dateParser->getTimestamp($date)),
         );
 
-        return $this->persist(self::TABLE, $values);
+        return $this->db->table(self::TABLE)->persist($values);
     }
 
     /**

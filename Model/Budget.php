@@ -6,11 +6,11 @@ use DateInterval;
 use DateTime;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Kanboard\Model\Base;
-use Kanboard\Model\SubtaskTimeTracking;
-use Kanboard\Model\Task;
-use Kanboard\Model\User;
-use Kanboard\Model\Subtask;
+use Kanboard\Core\Base;
+use Kanboard\Model\SubtaskTimeTrackingModel;
+use Kanboard\Model\TaskModel;
+use Kanboard\Model\UserModel;
+use Kanboard\Model\SubtaskModel;
 
 /**
  * Budget
@@ -62,24 +62,24 @@ class Budget extends Base
     public function getSubtaskBreakdown($project_id)
     {
         return $this->db
-                    ->table(SubtaskTimeTracking::TABLE)
+                    ->table(SubtaskTimeTrackingModel::TABLE)
                     ->columns(
-                        SubtaskTimeTracking::TABLE.'.id',
-                        SubtaskTimeTracking::TABLE.'.user_id',
-                        SubtaskTimeTracking::TABLE.'.subtask_id',
-                        SubtaskTimeTracking::TABLE.'.start',
-                        SubtaskTimeTracking::TABLE.'.time_spent',
-                        Subtask::TABLE.'.task_id',
-                        Subtask::TABLE.'.title AS subtask_title',
-                        Task::TABLE.'.title AS task_title',
-                        Task::TABLE.'.project_id',
-                        User::TABLE.'.username',
-                        User::TABLE.'.name'
+                        SubtaskTimeTrackingModel::TABLE.'.id',
+                        SubtaskTimeTrackingModel::TABLE.'.user_id',
+                        SubtaskTimeTrackingModel::TABLE.'.subtask_id',
+                        SubtaskTimeTrackingModel::TABLE.'.start',
+                        SubtaskTimeTrackingModel::TABLE.'.time_spent',
+                        SubtaskModel::TABLE.'.task_id',
+                        SubtaskModel::TABLE.'.title AS subtask_title',
+                        TaskModel::TABLE.'.title AS task_title',
+                        TaskModel::TABLE.'.project_id',
+                        UserModel::TABLE.'.username',
+                        UserModel::TABLE.'.name'
                     )
-                    ->join(Subtask::TABLE, 'id', 'subtask_id')
-                    ->join(Task::TABLE, 'id', 'task_id', Subtask::TABLE)
-                    ->join(User::TABLE, 'id', 'user_id')
-                    ->eq(Task::TABLE.'.project_id', $project_id)
+                    ->join(SubtaskModel::TABLE, 'id', 'subtask_id')
+                    ->join(TaskModel::TABLE, 'id', 'task_id', SubtaskModel::TABLE)
+                    ->join(UserModel::TABLE, 'id', 'user_id')
+                    ->eq(TaskModel::TABLE.'.project_id', $project_id)
                     ->callback(array($this, 'applyUserRate'));
     }
 
@@ -151,7 +151,7 @@ class Budget extends Base
 
             foreach ($rates as $rate) {
                 if ($rate['user_id'] == $record['user_id'] && date('Y-m-d', $rate['date_effective']) <= date('Y-m-d', $record['start'])) {
-                    $hourly_price = $this->currency->getPrice($rate['currency'], $rate['rate']);
+                    $hourly_price = $this->currencyModel->getPrice($rate['currency'], $rate['rate']);
                     break;
                 }
             }
@@ -181,7 +181,7 @@ class Budget extends Base
             'date' => $date ?: date('Y-m-d'),
         );
 
-        return $this->persist(self::TABLE, $values);
+        return $this->db->table(self::TABLE)->persist($values);
     }
 
     /**
