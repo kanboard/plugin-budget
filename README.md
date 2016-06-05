@@ -14,6 +14,11 @@ Author
 - Frederic Guillot
 - License MIT
 
+Requirements
+------------
+
+- Kanboard >= 1.0.29
+
 Installation
 ------------
 
