@@ -41,14 +41,14 @@ This section is available from project settings page: **Project > Budget**. Ther
 
 #### Budget Lines
 
-![Cost Lines](http://kanboard.net/screenshots/documentation/budget-lines.png)
+![Cost Lines](https://cloud.githubusercontent.com/assets/323546/20451620/965a4a2e-adc9-11e6-9131-3088ce6d8d78.png)
 
 Budget lines are used to define a budget for the project.
 This budget can be adjusted by adding a new entry with an effective date.
 
 #### Cost Breakdown
 
-![Cost Breakdown](http://kanboard.net/screenshots/documentation/budget-cost-breakdown.png)
+![Cost Breakdown](https://cloud.githubusercontent.com/assets/323546/20451619/9658c9ba-adc9-11e6-8dd9-97b7d01db7f2.png)
 
 Based on the subtask time tracking table and user information you can see the cost of each subtask.
 
@@ -56,7 +56,7 @@ The time spent is rounded to the nearest quarter.
 
 #### Budget Chart
 
-![Budget Graph](http://kanboard.net/screenshots/documentation/budget-graph.png)
+![Budget Graph](https://cloud.githubusercontent.com/assets/323546/20451621/965c1110-adc9-11e6-925c-c37c5a738c26.png)
 
 Finally, by combining all information we can generate a graph:
 
@@ -71,6 +71,6 @@ This feature is used for budget calculation.
 
 To define a new price, go to **User profile > Hourly rates**.
 
-![Hourly Rate](http://kanboard.net/screenshots/documentation/hourly-rate.png)
+![Hourly Rate](https://cloud.githubusercontent.com/assets/323546/20451622/965da606-adc9-11e6-9537-cd987abac06d.png)
 
 Each hourly rate can have an effective date and different currencies.
