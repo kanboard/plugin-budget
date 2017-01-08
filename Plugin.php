@@ -13,8 +13,8 @@ class Plugin extends Base
         $this->applicationAccessMap->add('HourlyRateController', '*', Role::APP_ADMIN);
         $this->projectAccessMap->add('BudgetController', '*', Role::PROJECT_MANAGER);
 
-        $this->route->addRoute('/budget/project/:project_id', 'BudgetController', 'index', 'budget');
-        $this->route->addRoute('/budget/project/:project_id/lines', 'BudgetController', 'create', 'budget');
+        $this->route->addRoute('/budget/project/:project_id', 'BudgetController', 'show', 'budget');
+        $this->route->addRoute('/budget/project/:project_id/lines', 'BudgetLineController', 'show', 'budget');
         $this->route->addRoute('/budget/project/:project_id/breakdown', 'BudgetController', 'breakdown', 'budget');
 
         $this->template->hook->attach('template:project:dropdown', 'budget:project/dropdown');
@@ -53,11 +53,16 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.8';
+        return '1.0.9';
     }
 
     public function getPluginHomepage()
     {
         return 'https://github.com/kanboard/plugin-budget';
+    }
+
+    public function getCompatibleVersion()
+    {
+        return '>=1.0.37';
     }
 }

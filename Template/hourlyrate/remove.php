@@ -4,10 +4,5 @@
 
 <div class="confirm">
     <p class="alert alert-info"><?= t('Do you really want to remove this hourly rate?') ?></p>
-
-    <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'HourlyRateController', 'remove', array('plugin' => 'budget', 'user_id' => $user['id'], 'rate_id' => $rate_id), true, 'btn btn-red') ?>
-        <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'HourlyRateController', 'index', array('plugin' => 'budget', 'user_id' => $user['id'])) ?>
-    </div>
+    <?= $this->modal->confirmButtons('HourlyRateController', 'remove', array('plugin' => 'budget', 'user_id' => $user['id'], 'rate_id' => $rate_id)) ?>
 </div>

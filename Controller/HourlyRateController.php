@@ -12,16 +12,22 @@ use Kanboard\Controller\BaseController;
  */
 class HourlyRateController extends BaseController
 {
-    /**
-     * Display rate and form
-     *
-     * @access public
-     */
-    public function index(array $values = array(), array $errors = array())
+    public function show()
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->user('budget:hourlyrate/index', array(
+        $this->response->html($this->helper->layout->user('budget:hourlyrate/show', array(
+            'rates' => $this->hourlyRate->getAllByUser($user['id']),
+            'currencies_list' => $this->currencyModel->getCurrencies(),
+            'user' => $user,
+        )));
+    }
+
+    public function create(array $values = array(), array $errors = array())
+    {
+        $user = $this->getUser();
+
+        $this->response->html($this->helper->layout->user('budget:hourlyrate/create', array(
             'rates' => $this->hourlyRate->getAllByUser($user['id']),
             'currencies_list' => $this->currencyModel->getCurrencies(),
             'values' => $values + array('user_id' => $user['id']),
@@ -30,11 +36,6 @@ class HourlyRateController extends BaseController
         )));
     }
 
-    /**
-     * Validate and save a new rate
-     *
-     * @access public
-     */
     public function save()
     {
         $values = $this->request->getValues();
@@ -43,35 +44,26 @@ class HourlyRateController extends BaseController
         if ($valid) {
             if ($this->hourlyRate->create($values['user_id'], $values['rate'], $values['currency'], $values['date_effective'])) {
                 $this->flash->success(t('Hourly rate created successfully.'));
-                return $this->response->redirect($this->helper->url->to('HourlyRateController', 'index', array('plugin' => 'budget', 'user_id' => $values['user_id'])));
+                $this->response->redirect($this->helper->url->to('HourlyRateController', 'show', array('plugin' => 'budget', 'user_id' => $values['user_id'])), true);
+                return;
             } else {
                 $this->flash->failure(t('Unable to save the hourly rate.'));
             }
         }
 
-        return $this->index($values, $errors);
+        $this->create($values, $errors);
     }
 
-    /**
-     * Confirmation dialag box to remove a row
-     *
-     * @access public
-     */
     public function confirm()
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->user('budget:hourlyrate/remove', array(
+        $this->response->html($this->template->render('budget:hourlyrate/remove', array(
             'rate_id' => $this->request->getIntegerParam('rate_id'),
             'user' => $user,
         )));
     }
 
-    /**
-     * Remove a row
-     *
-     * @access public
-     */
     public function remove()
     {
         $this->checkCSRFParam();
@@ -83,6 +75,6 @@ class HourlyRateController extends BaseController
             $this->flash->success(t('Unable to remove this rate.'));
         }
 
-        $this->response->redirect($this->helper->url->to('HourlyRateController', 'index', array('plugin' => 'budget', 'user_id' => $user['id'])));
+        $this->response->redirect($this->helper->url->to('HourlyRateController', 'show', array('plugin' => 'budget', 'user_id' => $user['id'])), true);
     }
 }
